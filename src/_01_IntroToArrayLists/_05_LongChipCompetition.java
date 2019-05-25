@@ -17,8 +17,25 @@ public class _05_LongChipCompetition {
 	public static void main(String[] args) {
 		_05_LongChipCompetition lcc = new _05_LongChipCompetition();
 		lcc.initializeBeatles();
-	}
+		ArrayList<Chip> c;
+		double length = 0.0;
+		String name="";
+		for (int i = 0; i < lcc.theBeatles.size(); i++) {
+c = lcc.theBeatles.get(i).getChips();
+			for (int j = 0; j < c.size(); j++) {
+				if (length <(c.get(j).getLength())) {
+					length=c.get(j).getLength();
+				name=	lcc.theBeatles.get(i).getName();
+				}
+				else {
+					
+				}
+			}
+		}
+System.out.println("The longest chip competition winner is " + name + " with " +length + " size chip");
 	
+	}
+
 	private void initializeBeatles() {
 		Beatle george = new Beatle("George");
 		Beatle john = new Beatle("John");
@@ -29,8 +46,8 @@ public class _05_LongChipCompetition {
 		theBeatles.add(paul);
 		theBeatles.add(ringo);
 	}
-	
-	public ArrayList<Beatle> getTheBand(){
+
+	public ArrayList<Beatle> getTheBand() {
 		return theBeatles;
 	}
 }
@@ -42,7 +59,7 @@ class Beatle {
 	public Beatle(String name) {
 		this.name = name;
 		initializePlateOfChips();
-		
+
 	}
 
 	private void initializePlateOfChips() {

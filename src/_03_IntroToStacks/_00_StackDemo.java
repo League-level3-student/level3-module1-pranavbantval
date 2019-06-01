@@ -21,9 +21,11 @@ public class _00_StackDemo {
 		
 		//Clearing the stack
 		int sz = flavors.size();
+		int x;
 		System.out.println("\nPopping all the strings off the Stack:");
 		for(int i = 0; i < sz; i++){
-			System.out.println(flavors.pop());
+			x=flavors.size();
+			System.out.println(flavors.pop() + " " +x );
 		}
 	}
 }

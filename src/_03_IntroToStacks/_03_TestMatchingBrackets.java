@@ -21,38 +21,35 @@ public class _03_TestMatchingBrackets {
 	// USE A STACK TO COMPLETE THE METHOD FOR CHECKING IF EVERY OPENING BRACKET HAS
 	// A MATCHING CLOSING BRACKET
 	private boolean doBracketsMatch(String b) {
-boolean x = true;
+		boolean x = true;
+		Stack<Character> chars = new Stack<Character>();
 		int open = 0;
 		int closed = 0;
-		Stack<Character> chars = new Stack<Character>();
-		for (int i = 0; i < b.length() - 1; i++) {
-			chars.push(b.charAt(i));
-		}
-		for (int i = 0; i < chars.size(); i++) {
-			char c = chars.pop();
-			if (c == '{') {
+		System.out.println(b.length());
+		for (int i = 0; i < b.length(); i++) {
+			if (b.charAt(i) == '{') {
 				open++;
-			} else if (c == '}') {
-				closed++;
+				System.out.println(b.charAt(i));
+				chars.push(b.charAt(i));
+			} else if (b.charAt(i) == '}') {
+				if (chars.size() != 0) {
+					closed++;
+					chars.pop();
+				} else {
+					closed=100;
+					x = false;
+					
+				}
 			}
-			if (closed > open) {
-				x=false;
-				return x;
-			}
-			else if (open > closed) {
-				x= false;
-				return x;
-			} else {
-				x= true;
-			}
-			}
-		if(x!=true) {
-			return true;
 		}
-		else {
-			return true;
+		if (open > closed) {
+			x = false;
+		} else if (closed > open) {
+			x = false;
+		} else {
+			 x=true;
 		}
-		}}
+		return x;
 
-	
-
+	}
+}

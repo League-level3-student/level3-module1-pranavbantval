@@ -20,9 +20,10 @@ public class HangMan implements KeyListener {
 	int lives;
 	String guessing;
 	String word;
-	int playAgain;
+	String playAgain = "";
 	int count;
 	String guessing2;
+	int check;
 	public static void main(String[] args) {
 		HangMan bob = new HangMan();
 		bob.createUI();
@@ -96,36 +97,41 @@ public class HangMan implements KeyListener {
 		
 		if(words.size()==0) {
 			JOptionPane.showMessageDialog(null, "YOU GOT ALL THE WORDS");
-		playAgain=	JOptionPane.showConfirmDialog(null, "Do you want to play again?");
+		playAgain=	JOptionPane.showInputDialog("Do you want to play again?");
+		System.out.println(playAgain);
+		check=1;
 		}
 		else {
 			JOptionPane.showMessageDialog(null, "Now on to the next word");
 			newWord();
 		}
-		if(playAgain==0) {
-			//replace 0 with actual number
+		if(playAgain.equalsIgnoreCase("Yes")) {
+			setup();
 			
-			
+			playAgain="";
 		}
-		else {
-			//close frame
+		else if(words.size()==0&&check==1) {
+			f.dispose();
 		}
 		}
 		else if(lives<=0) {
 			JOptionPane.showMessageDialog(null, "GAME OVER");
-			playAgain = JOptionPane.showConfirmDialog(null, "Do you want to play again?");
-			if(playAgain==00) {
-				
+			playAgain = JOptionPane.showInputDialog("Do you want to play again?");
+			System.out.println(playAgain);
+			check=1;
+			if(playAgain.equalsIgnoreCase("Yes")) {
+				setup();
 			}
-			else {
-				//replace 0 with actual number
-			//close frame
+			else if (words.size()==0&&check==1){
+				f.dispose();
 			}
 		}
 	}
 	public void setup() {
 		setWords();
+		playAgain="";
 		newWord();
+		check=0;
 	}
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -139,7 +145,7 @@ public class HangMan implements KeyListener {
 		key = e.getKeyChar();
 		System.out.println(key);
 		tryLetter(key);
-
+		wordFinished();
 	}
 
 	@Override

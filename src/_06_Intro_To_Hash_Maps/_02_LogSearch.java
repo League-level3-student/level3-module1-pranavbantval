@@ -45,6 +45,7 @@ public class _02_LogSearch implements ActionListener {
 	JButton button3 = new JButton();
 	JButton button4 = new JButton();
 	String x;
+	String b3="";
 	public void createUI() {
 		f.add(p);
 		f.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
@@ -84,10 +85,13 @@ public class _02_LogSearch implements ActionListener {
 			
 		}
 		else if(b==button3) {
+			b3="";
 			for (Integer i : names.keySet()) {
-			 x=	"ID: "+ i + " Name: "+ names.get(i);
+			 x=	"ID: "+ i + " Name: "+ names.get(i)+" \n ";
+				b3+=x;
 				
 			}
+			JOptionPane.showMessageDialog(null, b3);
 		}
 		else if(b==button4) {
 			Integer code = Integer.parseInt(JOptionPane.showInputDialog("Enter an ID number"));
